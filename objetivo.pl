@@ -1,1 +1,1 @@
-camino(a,d,CaminoR).
+:-camino(a,d,X).

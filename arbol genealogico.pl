@@ -10,6 +10,8 @@
 hombre(josue).
 hombre(mario).
 hombre(juan_diego).
+hombre(luis).
+hombre(jorge).
 
 %Mujer
 %mujer(x): x es mujer
@@ -24,6 +26,8 @@ progenitor(josue,mario).
 progenitor(marcela,josue).
 progenitor(marcela,maria).
 progenitor(juan_diego,marcela).
+progenitor(josue,luis).
+progenitor(josue,sebastian).
 
 %REGLAS
 
