@@ -23,16 +23,7 @@ progenitor(josue,alejandra).
 progenitor(josue,mario).
 progenitor(marcela,josue).
 progenitor(marcela,maria).
-
-%Padre
-%padre(x,y): x es padre de y
-padre(josue, alejandra).
-padre(josue, mario).
-
-%Madre
-%madre(x,y): x es madre de y
-madre(marcela, josue).
-madre(marcela, maria).
+progenitor(juan_diego,marcela).
 
 %REGLAS
 
@@ -55,10 +46,10 @@ abuelo(X,Y):-padre(X,Z),(madre(Z,Y);padre(Z,Y)).
 abuela(X,Y):-madre(X,Z),(madre(Z,Y);padre(Z,Y)).
 
 %hermano(x,y): x es hermano de y
-hermano(X,Y):-padre(Z,X),padre(Z,Y),madre(Z1,X),madre(Z1,Y),not(X=Y),hombre(X).
+hermano(X,Y):-hombre(X),progenitor(Z,X),progenitor(Z,Y),not(X=Y).
 
 %hermana(x,y): x es hermana de y
-hermana(X,Y):-padre(Z,X),padre(Z,Y),madre(Z1,X),madre(Z1,Y),not(X=Y),mujer(X).
+hermana(X,Y):-mujer(X),progenitor(Z,X),progenitor(Z,Y),not(X=Y).
 
 %sobrino(x,y): x es sobrino de y
 sobrino(X,Y):-hijo(X,P),(hermano(P,Y);hermana(P,Y)).
