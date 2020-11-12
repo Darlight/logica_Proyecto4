@@ -17,6 +17,13 @@ mujer(maria).
 mujer(alejandra).
 mujer(marcela).
 
+%Progenitor
+%progenitor(x,y): x es progenitor de y
+progenitor(josue,alejandra).
+progenitor(josue,mario).
+progenitor(marcela,josue).
+progenitor(marcela,maria).
+
 %Padre
 %padre(x,y): x es padre de y
 padre(josue, alejandra).
@@ -28,17 +35,24 @@ madre(marcela, josue).
 madre(marcela, maria).
 
 %REGLAS
+
+%padre(x,y): x es padre de y
+padre(X,Y):-hombre(X),progenitor(X,Y).
+
+%madre(x,y): x es madre de y
+madre(X,Y):-mujer(X),progenitor(X,Y).
+
+%hijo(x,y): x es hijo de y
+hijo(X,Y):-hombre(X),progenitor(Y,X).
+
+%hija(x,y): x es hija de y
+hija(X,Y):-mujer(X),progenitor(Y,X).
+
 %abuelo(x,y): x es abuelo de y
 abuelo(X,Y):-padre(X,Z),(madre(Z,Y);padre(Z,Y)).
 
 %abuela(x,y): x es abuela de y
 abuela(X,Y):-madre(X,Z),(madre(Z,Y);padre(Z,Y)).
-
-%hijo(x,y): x es hijo de y
-hijo(X,Y):-hombre(X), (padre(Y,X);madre(Y,X)).
-
-%hija(x,y): x es hija de y
-hija(X,Y):-mujer(X), (padre(Y,X);madre(Y,X)).
 
 %hermano(x,y): x es hermano de y
 hermano(X,Y):-padre(Z,X),padre(Z,Y),madre(Z1,X),madre(Z1,Y),not(X=Y),hombre(X).
