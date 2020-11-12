@@ -1,0 +1,1 @@
+camino(a,d,CaminoR).
